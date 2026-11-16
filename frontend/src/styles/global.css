@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brickanta color palette */
+  --brick-dark: #1a1a2e;
+  --brick-mid: #16213e;
+  --brick-accent: #e94560;
+  --brick-light: #f5f5f5;
+  --brick-muted: #a0a0a0;
+  --brick-border: #2a2a4a;
+  --brick-success: #00d2ff;
+  --brick-warning: #ffbe0b;
+  --brick-error: #ff006e;
+}
+
+* {
+  font-family: 'Fira Code', monospace;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--brick-dark);
+  color: var(--brick-light);
+  font-family: 'Fira Code', monospace;
+}
+
+/* Brutalist resets */
+button, a, input, textarea, select {
+  border-radius: 0;
+  font-family: 'Fira Code', monospace;
+}
+
+button {
+  cursor: pointer;
+  border: 2px solid var(--brick-light);
+  background: transparent;
+  color: var(--brick-light);
+  padding: 8px 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.1s;
+}
+
+button:hover {
+  background: var(--brick-accent);
+  color: var(--brick-dark);
+  border-color: var(--brick-accent);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+}
+
+input, textarea, select {
+  border: 2px solid var(--brick-border);
+  background: var(--brick-mid);
+  color: var(--brick-light);
+  padding: 8px 12px;
+  font-family: 'Fira Code', monospace;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--brick-accent);
+}
+
+/* Brutalist card */
+.brutal-card {
+  border: 3px solid var(--brick-border);
+  background: var(--brick-mid);
+  padding: 24px;
+  box-shadow: 4px 4px 0px 0px var(--brick-accent);
+}
+
+.brutal-card:hover {
+  box-shadow: 6px 6px 0px 0px var(--brick-accent);
+  transform: translate(-2px, -2px);
+  transition: all 0.1s;
+}
+
+/* Brutalist table */
+.brutal-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid var(--brick-border);
+}
+
+.brutal-table th, .brutal-table td {
+  border: 1px solid var(--brick-border);
+  padding: 12px;
+  text-align: left;
+}
+
+.brutal-table th {
+  background: var(--brick-accent);
+  color: var(--brick-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.brutal-table tr:hover {
+  background: var(--brick-mid);
+}
+
+/* Brutalist badge */
+.brutal-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 2px solid;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.brutal-badge.success {
+  border-color: var(--brick-success);
+  color: var(--brick-success);
+}
+
+.brutal-badge.warning {
+  border-color: var(--brick-warning);
+  color: var(--brick-warning);
+}
+
+.brutal-badge.error {
+  border-color: var(--brick-error);
+  color: var(--brick-error);
+}
+
+/* Brutalist heading */
+.brutal-heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Brutalist divider */
+.brutal-divider {
+  border: none;
+  border-top: 3px solid var(--brick-accent);
+  margin: 24px 0;
+}
+
+/* Grid layout */
+.brutal-grid {
+  display: grid;
+  gap: 16px;
+}

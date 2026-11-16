@@ -1,0 +1,22 @@
+{
+  "name": "@chamberwork/workspace-sync",
+  "version": "1.0.0",
+  "openchamber": {
+    "apiVersion": 1,
+    "id": "chamberwork-sync",
+    "name": "Chamberwork Sync",
+    "icon": "shield-check",
+    "contributes": {
+      "panel": { "entry": "index.html" },
+      "capabilities": ["files", "prompt", "sessions"],
+      "integration": {
+        "name": "Chamberwork",
+        "description": "Enterprise Sync for Chamberwork CDE",
+        "token": {
+          "apiOrigin": "https://app.chamberwork.space",
+          "scheme": "bearer"
+        }
+      }
+    }
+  }
+}

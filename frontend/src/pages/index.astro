@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Cloud Development Environments">
+  <div class="min-h-screen" style="background-color: #1a1a2e; color: #f5f5f5;">
+    <!-- Navigation -->
+    <nav style="border-bottom: 3px solid #e94560; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: -0.02em;">
+        CHAMBERWORK<span style="color: #e94560;">.</span>SPACE
+      </div>
+      <div style="display: flex; gap: 16px;">
+        <a href="/dashboard" style="color: #f5f5f5; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.875rem;">Dashboard</a>
+        <a href="/settings" style="color: #f5f5f5; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.875rem;">Settings</a>
+        <button style="padding: 8px 24px; background: #e94560; color: #1a1a2e; border: 2px solid #e94560; font-weight: 700; text-transform: uppercase;">Sign In</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="padding: 80px 32px; max-width: 1200px; margin: 0 auto;">
+      <h1 style="font-size: 4rem; font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: -0.03em; margin-bottom: 24px;">
+        CLOUD<br />
+        <span style="color: #e94560;">DEVELOPMENT</span><br />
+        ENVIRONMENTS
+      </h1>
+      <p style="font-size: 1.125rem; max-width: 600px; color: #a0a0a0; margin-bottom: 32px; line-height: 1.6;">
+        Isolated workspaces. Shared credentials. No per-seat billing. 
+        Your team gets dedicated VPS instances with OpenChamber, OpenCode, 
+        and AI agent tooling — secured by Better-Auth and Cloudflare Tunnel.
+      </p>
+      <div style="display: flex; gap: 16px;">
+        <button style="padding: 16px 32px; background: #e94560; color: #1a1a2e; border: 2px solid #e94560; font-weight: 700; text-transform: uppercase; font-size: 1rem;">
+          Get Started
+        </button>
+        <button style="padding: 16px 32px; background: transparent; color: #f5f5f5; border: 2px solid #f5f5f5; font-weight: 700; text-transform: uppercase; font-size: 1rem;">
+          View Pricing
+        </button>
+      </div>
+    </section>
+
+    <hr style="border: none; border-top: 3px solid #e94560; margin: 0 32px;" />
+
+    <!-- Pricing Grid -->
+    <section style="padding: 64px 32px; max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 32px; letter-spacing: -0.02em;">
+        Workspace Plans
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        {[
+          { name: "Solo CDE", price: "$15/mo", ram: "1 GB RAM", cpu: "1 Core", target: "Individual developer", url: "yourname.chamberwork.space" },
+          { name: "Team Starter", price: "$25/mo", ram: "2 GB RAM", cpu: "2 Cores", target: "Small team", url: "team.chamberwork.space/you" },
+          { name: "Team Pro", price: "$40/mo", ram: "4 GB RAM", cpu: "3 Cores", target: "Growing team", url: "team.chamberwork.space/you" },
+          { name: "Team Scale", price: "$60/mo", ram: "8 GB RAM", cpu: "4 Cores", target: "Heavy workloads", url: "team.chamberwork.space/you" },
+        ].map((plan) => (
+          <div class="brutal-card" style="border: 3px solid #2a2a4a; background: #16213e; padding: 24px; box-shadow: 4px 4px 0px 0px #e94560;">
+            <div style="font-weight: 700; font-size: 1.25rem; text-transform: uppercase; color: #00d2ff; margin-bottom: 8px;">
+              {plan.name}
+            </div>
+            <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; color: #e94560;">
+              {plan.price}
+            </div>
+            <div style="color: #a0a0a0; font-size: 0.875rem; margin-bottom: 16px;">
+              {plan.target}
+            </div>
+            <hr style="border: none; border-top: 2px solid #2a2a4a; margin: 16px 0;" />
+            <div style="font-size: 0.875rem; color: #f5f5f5;">
+              <div style="margin-bottom: 4px;">• {plan.ram}</div>
+              <div style="margin-bottom: 4px;">• {plan.cpu}</div>
+              <div style="margin-bottom: 4px; color: #a0a0a0; font-style: italic; font-size: 0.75rem;">
+                Route: {plan.url}
+              </div>
+            </div>
+            <button style="width: 100%; margin-top: 16px; padding: 12px; background: #0284c7; color: #f5f5f5; border: 2px solid #0284c7; font-weight: 700; text-transform: uppercase;">
+              Subscribe via Stripe
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr style="border: none; border-top: 3px solid #e94560; margin: 0 32px;" />
+
+    <!-- Features -->
+    <section style="padding: 64px 32px; max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 32px; letter-spacing: -0.02em;">
+        Built For Developers
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        {[
+          { title: "Isolated Workspaces", desc: "Each user gets their own directory, credentials, and chat history. No cross-contamination." },
+          { title: "Git Identities", desc: "Personal GitHub tokens and SSH keys per user. Commits go under your name." },
+          { title: "Worktree Sessions", desc: "Parallel sessions in independent git worktrees. Refactor and fix bugs simultaneously." },
+          { title: "Token Optimization", desc: "RTK, Caveman, and Ponytail reduce token usage by up to 65%." },
+          { title: "Org Model Sync", desc: "Admins configure OpenAI org agreements. Staff get instant model access on login." },
+          { title: "SSO via Better-Auth", desc: "OAuth 2.1 provider with JWT tokens. No duplicate credentials across VPS instances." },
+        ].map((feature) => (
+          <div style="border: 2px solid #2a2a4a; padding: 24px; background: #16213e;">
+            <div style="font-weight: 700; text-transform: uppercase; color: #00d2ff; margin-bottom: 8px; font-size: 1rem;">
+              {feature.title}
+            </div>
+            <div style="color: #a0a0a0; font-size: 0.875rem; line-height: 1.6;">
+              {feature.desc}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top: 3px solid #e94560; padding: 32px; text-align: center; color: #a0a0a0; font-size: 0.875rem;">
+      <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: #f5f5f5;">
+        CHAMBERWORK.SPACE
+      </div>
+      <div>Cloud Development Environments · No Per-Seat Billing · Powered by OpenChamber & Better-Auth</div>
+    </footer>
+  </div>
+</Layout>
