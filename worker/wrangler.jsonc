@@ -1,0 +1,48 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chamberwork",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Frontend: Astro static build served natively by the Worker
+  "assets": {
+    "directory": "../frontend/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+
+  // Auth, orgs, credit wallet, usage ledger, workspace registry
+  "d1_databases": [
+    { "binding": "DB", "database_name": "chamberwork", "database_id": "PLACEHOLDER_wrangler-d1-create" }
+  ],
+
+  // Usage-based metering: one data point per metered event
+  "analytics_engine_datasets": [{ "binding": "USAGE" }],
+
+  // Workspace snapshots + download archives
+  "r2_buckets": [{ "binding": "SNAPSHOTS", "bucket_name": "chamberwork-snapshots" }],
+
+  // Rented CDE containers (OpenChamber + OpenCode), one DO per workspace
+  "durable_objects": {
+    "bindings": [{ "name": "WORKSPACE", "class_name": "Workspace" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Workspace"] }],
+  "containers": [
+    {
+      "app_name": "chamberwork-cde",
+      "class_name": "Workspace",
+      "image": "./container/Dockerfile",
+      "max_instances": 50,
+      "instance_type": "basic"
+    }
+  ],
+
+  // Hourly billing reconciliation
+  "triggers": { "crons": ["0 * * * *"] },
+
+  "vars": {
+    "APP_ORIGIN": "https://app.chamberwork.space",
+    "WORKSPACE_DOMAIN": "chamberwork.space"
+  }
+}
